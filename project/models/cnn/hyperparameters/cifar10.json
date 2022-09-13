@@ -1,8 +1,11 @@
 {
-    "train": "base_classification",
+    "trainer": {
+        "module": "trainers.base_classification",
+        "class": "LightningClassificationModule"
+    },
     "model": {
         "classifier": {
-            "folder": "modules.resnet.resnet",
+            "module": "modules.resnet.resnet",
             "class": "ResNet",
             "params": {
                 "block": "BasicBlock",
@@ -26,7 +29,7 @@
             }
         }
     },
-    "configure_optimizers": {
+    "optimizer": {
         "optimizer": {
             "type": "Adam",
             "lr": 0.0004,

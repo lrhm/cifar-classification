@@ -68,6 +68,16 @@
         "train_batch_size": 64,
         "test_batch_size": 64
     },
+    "logger": {
+        "module": "pytorch_lightning.loggers",
+        "class": "WandbLogger",
+        "params": {
+            "project": "cifar10",
+            "name": "resnet18",
+            "save_dir": "./logs",
+            "log_model": "all"
+        }
+    },
     "data_loader": "cifar10",
     "cuda": true,
     "max_epochs": 100

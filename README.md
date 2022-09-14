@@ -37,18 +37,21 @@ mate train vit cifar10
 ```
 or 
 ```bash
-mate train vit cifar_vit_small.json
+mate train vit cifar_vit_small
 ```
 
 You can consequently restart the training with the same configuration by running:
 ```bash
-mate restart resnet cifar10
+mate restart vit cifar10
 ```
 
 
 # Experimenting and trying other models
-You can try other models by changing the model in the hyperparameters or making new configuration file. Over 30 ViTs are avaialable to experiment with. You can also fork the vit models and change the models as you wish:
+You can try other models by changing the model in the hyperparameters or making new configuration file. Over 30 ViTs are available to experiment with. You can also fork the vit models and change the models as you wish:
 ```bash
 mate clone vit awesome_vit
 ```
 Then, change the models in `project/models/awesome_vit` and keep on experimenting.
+
+# Special thanks
+Special thanks to lucidrains for the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) library.

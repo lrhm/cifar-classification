@@ -2,6 +2,7 @@ from argparse import Namespace
 from pytorch_lightning import LightningModule
 import torch as t
 import mate
+import torchmetrics
 import ipdb
 
 
@@ -15,6 +16,9 @@ class LightningClassificationModule(LightningModule):
         self.criterion = t.nn.CrossEntropyLoss()
         self.classifier = classifier
 
+        self.train_accuracy = torchmetrics.Accuracy()
+        self.val_accuracy = torchmetrics.Accuracy()
+
         self.loss = lambda y_hat, y: self.criterion(y_hat, y)
 
     def forward(self, x):
@@ -23,17 +27,29 @@ class LightningClassificationModule(LightningModule):
     def training_step(self, batch, batch_idx):
         x, y = batch
         y_hat = self(x)
+        self.train_accuracy.update(y_hat, y)
         loss = self.loss(y_hat, y)
         self.log('train_loss', loss)
         return loss
 
     def validation_step(self, batch, batch_idx):
         x, y = batch
-        # ipdb.set_trace()
         y_hat = self(x)
+        self.val_accuracy.update(y_hat, y)
         loss = self.loss(y_hat, y)
         self.log('val_loss', loss)
         return loss
+
+    def validation_epoch_end(self, outputs):
+        loss_mean = t.stack([x for x in outputs]).mean()
+        self.log('val_accuracy', self.val_accuracy.compute(), prog_bar=True)
+        self.log('val_loss', loss_mean)
+        self.val_accuracy.reset()
+
+    def training_epoch_end(self, outputs):
+        self.log('train_accuracy', self.train_accuracy.compute(), prog_bar=True)
+        self.train_accuracy.reset()
+
 
     def test_step(self, batch, batch_idx):
         x, y = batch

@@ -4,7 +4,7 @@
         "class": "LightningClassificationModule",
         "params": {
             "classifier": {
-                "module": "project.models.cnn.modules.resnet.resnet",
+                "module": "project.models.resnet.modules.resnet.resnet",
                 "class": "ResNet",
                 "params": {
                     "block": "BasicBlock",

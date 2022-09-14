@@ -3,33 +3,41 @@
         "module": "trainers.base_classification",
         "class": "LightningClassificationModule",
         "params": {
-            "classifier": {
-                "module": "project.models.cnn.modules.resnet.resnet",
-                "class": "ResNet",
+            "distiller": {
+                "module": "modules.vit_pytorch.distill",
+                "class": "DistillWrapper",
                 "params": {
-                    "block": "BasicBlock",
-                    "layers": [
-                        3,
-                        4,
-                        6,
-                        3
-                    ],
-                    "num_classes": 10,
-                    "in_channels": 3,
-                    "zero_init_residual": false,
-                    "groups": 1,
-                    "width_per_group": 64,
-                    "replace_stride_with_dilation": [
-                        false,
-                        false,
-                        false
-                    ],
-                    "norm_layer": "BatchNorm2d"
+                    "student": {
+                        "module": "modules.vit_pytorch.distill",
+                        "class": "DistillableViT",
+                        "params": {
+                            "image_size": 256,
+                            "patch_size": 32,
+                            "num_classes": 2,
+                            "dim": 1024,
+                            "depth": 6,
+                            "heads": 16,
+                            "mlp_dim": 2048,
+                            "dropout": 0.1,
+                            "emb_dropout": 0.1
+                        }
+                    },
+                    "teacher": {
+                        "module": "torchvision.models",
+                        "class": "resnet50",
+                        "params": {
+                            "pretrained": true
+                        }
+                    },
+                    "tempature": 3,
+                    "alpha": 0.5,
+                    "hard": false
                 }
             }
         }
+
     },
-    "optimizer": {
+    "optimizer": { 
         "optimizer": {
             "type": "Adam",
             "lr": 0.0004,

@@ -4,27 +4,18 @@
         "class": "LightningClassificationModule",
         "params": {
             "classifier": {
-                "module": "project.models.cnn.modules.resnet.resnet",
-                "class": "ResNet",
+                "module": "project.models.vit.modules.vit.vit",
+                "class": "ViT",
                 "params": {
-                    "block": "BasicBlock",
-                    "layers": [
-                        3,
-                        4,
-                        6,
-                        3
-                    ],
+                    "image_size": 32,
+                    "patch_size": 16,
                     "num_classes": 10,
-                    "in_channels": 3,
-                    "zero_init_residual": false,
-                    "groups": 1,
-                    "width_per_group": 64,
-                    "replace_stride_with_dilation": [
-                        false,
-                        false,
-                        false
-                    ],
-                    "norm_layer": "BatchNorm2d"
+                    "dim": 128,
+                    "depth": 6,
+                    "heads": 16,
+                    "mlp_dim": 128,
+                    "dropout": 0.1,
+                    "emb_dropout": 0.1
                 }
             }
         }
@@ -68,15 +59,15 @@
     "data": {
         "data_loader": "cifar10",
         "location": "./data/cifar10",
-        "train_batch_size": 64,
-        "test_batch_size": 64
+        "train_batch_size": 128,
+        "test_batch_size": 128
     },
     "logger": {
         "module": "pytorch_lightning.loggers",
         "class": "WandbLogger",
         "params": {
             "project": "cifar10",
-            "name": "resnet18",
+            "name": "vit_vanilla",
             "save_dir": "./logs",
             "log_model": "all"
         }

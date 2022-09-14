@@ -8,7 +8,7 @@ Then, install the dependencies:
 ```bash
 pip install -r project/requirements.txt
 ```
-Keep in mind that the project requires pytorch 1.12.0 and pytorch-lightning 1.7.5 and above and the requirements installs the nightly versions of both.
+Keep in mind that the project requires pytorch 1.12.0, pytorch-lightning 1.7.5 and above while the requirements installs the nightly versions of both.
 
 # Running the project
 To run the project, you can use Mate to run different configurations. Look at `project/models/resnet/hyperparatmers/cifar10.json` and `project/models/vit/hyperparameters/cifar10.json` for examples of configurations. Any configuration file can be selected to train. To train a model, run:

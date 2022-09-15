@@ -1,21 +1,21 @@
 # cifar-classification
-A simple cifar classification task with 30 ViT and CNNs.
+A simple cifar classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository.
 
 # Getting started
-First, install the dev version of Mate from this [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning).
+First, install the dev version of Mate from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning).
 
 Then, install the dependencies:
 ```bash
 pip install -r project/requirements.txt
 ```
-Keep in mind that the project requires pytorch 1.12.0, pytorch-lightning 1.7.5 and above while the requirements installs the nightly versions of both.
+Keep in mind that the project requires pytorch 1.12.1 and cuda to run on GPU.
 
 ## Running the project
 To run the project, you can use Mate to run different configurations. Look at `project/models/resnet/hyperparatmers/cifar10.json` and `project/models/vit/hyperparameters/cifar10.json` for examples of configurations. Any configuration file can be selected to train. To train a model, run:
 ```bash
 mate train {model_name} {hyperparameter_file}
 ```
-where `{model_name}` is either `resnet` or `vit` and `{hyperparameter_file}` is the name of the hyperparameter file.
+where `{model_name}` can be anything e.g., `resnet` or `vit` and `{hyperparameter_file}` is the name of the hyperparameter file.
 
 ## Logging
 The project uses [Weights and Biases](https://wandb.ai/) to log the training process. To log your training, you need to create an account and install the `wandb` package. 
@@ -27,7 +27,7 @@ Then, you need to login to your account:
 wandb login
 ```
 
-You can also select any pytorch lightning loggers, for example `TensorBoardLogger` or `CSVLogger` in the hyperparameter file.
+You can also select any pytorch lightning loggers, for example `TensorBoardLogger` or `CSVLogger` in the hyperparameter file. See `models/vit/hyperparateres/cifar-tensorboard.json` for an example.
 
 ## Training
 
@@ -52,4 +52,4 @@ mate clone vit awesome_vit
 Then, change the models in `project/models/awesome_vit` and keep on experimenting.
 
 ## Special thanks
-Special thanks to the legend lucidrains for the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) library. All the ViTs are based on his work.
+Special thanks to the legend lucidrains for the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) library. His licence applies to the ViT models in this project.

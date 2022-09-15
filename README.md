@@ -1,8 +1,8 @@
-# cifar-classification
-A simple cifar classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository.
+# Cifar classification with Maté
+A simple cifar classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository. 
 
 # Getting started
-First, install the dev version of Mate from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning).
+First, install the dev version of Maté from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning).
 
 Then, install the dependencies:
 ```bash
@@ -43,13 +43,15 @@ You can consequently restart the training with the same configuration by running
 mate restart vit cifar10
 ```
 
-
 ## Experimenting and trying other models
 You can try other models by changing the model in the hyperparameters or making new configuration file. Over 30 ViTs are available to experiment with. You can also fork the vit models and change the models as you wish:
 ```bash
 mate clone vit awesome_vit
 ```
 Then, change the models in `project/models/awesome_vit` and keep on experimenting.
+
+## Customizing the hyperparameters
+You can customize the hyperparameters by changing the hyperparameter file. For example, you can change the learning rate, batch size, optimizer, etc. You can also add new hyperparameters to the hyperparameter file. For example, you can add a new hyperparameter `tempature_learning_rate` to the hyperparameter file and use it in the model. The hyperparameter configuration is compatible with python objects, where you need to specify the module, class and parameters for initialization of the object. Optimizers, Trainers, Models and Pytorch-Lightning modules are directly created from the arguments in the configuration file and torch packages.
 
 ## Special thanks
 Special thanks to the legend lucidrains for the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) library. His licence applies to the ViT models in this project.

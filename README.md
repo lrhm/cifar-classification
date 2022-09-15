@@ -51,7 +51,7 @@ mate clone vit awesome_vit
 Then, change the models in `project/models/awesome_vit` and keep on experimenting.
 
 ## Customizing the hyperparameters
-You can customize the hyperparameters by changing the hyperparameter file. For example, you can change the learning rate, batch size, optimizer, etc. You can also add new hyperparameters to the hyperparameter file. For example, you can add a new hyperparameter `tempature_learning_rate` to the hyperparameter file and use it in the model. The hyperparameter configuration is compatible with python objects, where you need to specify the module, class and parameters for initialization of the object. Optimizers, Trainers, Models and Pytorch-Lightning modules are directly created from the arguments in the configuration file and torch packages.
+You can customize the hyperparameters by changing the hyperparameter file. For example, you can change the learning rate, batch size, optimizer, etc. You can also add new hyperparameters to the hyperparameter file. For example, you can add a new hyperparameter `tempature_learning_rate` to the hyperparameter file and use it in the model. The hyperparameter configuration is compatible with python objects, where you need to specify the module, class and parameters for initialization of the object. Optimizers, Trainers, Models and Pytorch-Lightning modules are directly created from the arguments in the configuration file and pytorch packages.
 
 ## Special thanks
 Special thanks to the legend lucidrains for the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) library. His licence applies to the ViT models in this project.

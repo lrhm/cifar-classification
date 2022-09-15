@@ -1,6 +1,7 @@
 # Cifar 10 data loader lightning class based on torchvision cifar10 dataset
 
 from argparse import Namespace
+from array import array
 import os
 import torch as t
 import pytorch_lightning as pl
@@ -11,34 +12,34 @@ import ipdb
 from torch.utils.data import DataLoader
 
 
-class CustomDataModule(pl.LightningDataModule):
+class CifarLightningDataModule(pl.LightningDataModule):
 
-    def __init__(self, params: Namespace):
-        super().__init__()
+    def __init__(self, location: str, batch_size: int, image_size: array, *args):
+        super().__init__(*args)
 
-        self.data_dir = params.data.location
-        self.batch_size = params.data.train_batch_size
-        # ipdb.set_trace()
+        self.data_dir = location
+        self.batch_size = batch_size
+        self.image_size = tuple(image_size)
 
         # transform pil image to tensor
         transform = transforms.Compose(
             [transforms.ToTensor(),
-             # transforms.Resize((256, 256))
+             transforms.Resize(self.image_size),
              transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
              ]
 
         )
         train_trainsform = transforms.Compose(
             [
+                transforms.ToTensor(),
+                transforms.Resize(self.image_size),
                 transforms.RandomHorizontalFlip(),
                 transforms.RandomRotation(10),
-                transforms.ToTensor(),
                 transforms.Normalize([0.485, 0.456, 0.406], [
                                      0.229, 0.224, 0.225])
             ]
         )
-        # self.transform = t.jit.script(self.transform)
-        # ipdb.set_trace()
+
         self.train_set = CIFAR10(
             root=self.data_dir, train=True, download=True, transform=train_trainsform)
         self.test_set = CIFAR10(
@@ -47,10 +48,10 @@ class CustomDataModule(pl.LightningDataModule):
         self.num_workers = os.cpu_count()
 
     def train_dataloader(self):
-        return DataLoader(self.train_set, batch_size=self.batch_size, shuffle=True, num_workers=4)
+        return DataLoader(self.train_set, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers)
 
     def val_dataloader(self):
-        return DataLoader(self.test_set, batch_size=self.batch_size, shuffle=False, num_workers=4)
+        return DataLoader(self.test_set, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers)
 
     def test_dataloader(self):
-        return DataLoader(self.test_set, batch_size=self.batch_size, shuffle=False, num_workers=4)
+        return DataLoader(self.test_set, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers)

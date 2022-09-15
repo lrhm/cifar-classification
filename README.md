@@ -1,5 +1,5 @@
 # Cifar classification with [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning)
-A simple image classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository. This project requires pytorch, pytorch-lightning, and [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning). [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning) supports pretrained models from any installed python package, for example torchvision and huggingface models. You can also use Maté 🧉 to train your own models and dataset. Maté 🧉 is a simple wrapper around pytorch-lightning, so you can use any pytorch-lightning trainer arguments. Maté 🧉 also supports distributed training, so you can train your models on multiple GPUs. Maté 🧉 is still in development, so please report any bugs or feature requests.
+A simple image classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository. This project requires pytorch, pytorch-lightning, and [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning). [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning) supports pretrained models from any installed python package, for example torchvision and huggingface models. You can also use Maté 🧉 to train your own models and dataset. Maté 🧉 is a simple wrapper around pytorch-lightning, so you can use any pytorch-lightning trainer arguments. Maté 🧉 also supports distributed training, so you can train your models on multiple GPUs or datasets. Maté 🧉 is still in development, so please report any bugs or feature requests.
 
 
 # Getting started
@@ -32,24 +32,16 @@ mate train {model_name} {hyperparameter_file}
 where `{model_name}` can be anything e.g., `resnet` or `vit` and `{hyperparameter_file}` is the name of the hyperparameter file and the experiment.
 
 ## Logging
-The project by default uses [Weights and Biases](https://wandb.ai/) to log the training process. To log your training with wandb you need to create an account and install the `wandb` package. 
-```
-pip install wandb
-```
-Then, you need to login to your account:
-```
-wandb login
-```
-
-You can also select any pytorch lightning loggers, e.g., `TensorBoardLogger` or `CSVLogger`. See `/vit/hyperparateres/tensorboard.json` for an example.
+The project by default uses [Weights and Biases](https://wandb.ai/) to log the training process. You can also select any pytorch lightning loggers, e.g., `TensorBoardLogger` or `CSVLogger`. See `/vit/hyperparateres/tensorboard.json` for an example.
 
 ## Training
 
 You can select any combination of your models with hyperparameters, for example:
 ```bash
+mate train vit cifar100 # train vit on cifar100
 mate train resnet fine_tune # fine tune a resnet trained on imagenet on cifar
 mate train vit small_datasets #  model from Vision Transformer for Small-Size Datasets paper
-mate train vit vanilla # original ViT paper: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
+mate train vit vanilla # original ViT paper: An Image is Worth 16x16 Words
 ```
 
 You can consequently restart the training with the same configuration by running:

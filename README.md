@@ -59,10 +59,10 @@ mate restart vit vanilla
 ## Results
 With wandb logger, you can visualize the results, for example fine tuning a resnet on cifar:
 
-![Train Accuracy](/images/train_accuracy.jpg?raw=true "Train accuracy")
-![Validation Accuracy](/images/val_accuracy.jpg?raw=true "Validation accuracy")
-![Train Loss](/images/train_loss.jpg?raw=true "Train loss")
-![Validation Loss](/images/val_loss.jpg?raw=true "Validation loss")
+![Train Accuracy](/images/train_accuracy.png?raw=true "Train accuracy")
+![Validation Accuracy](/images/val_accuracy.png?raw=true "Validation accuracy")
+![Train Loss](/images/train_loss.png?raw=true "Train loss")
+![Validation Loss](/images/val_loss.png?raw=true "Validation loss")
 
 
 ## Experimenting and trying other models

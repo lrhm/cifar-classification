@@ -1,6 +1,8 @@
 einops==0.4.1
 ipdb==0.13.9
+mate==0.2.0
 pytorch_lightning==1.7.5
-torch==1.13.0.dev20220911+cu117
+torch==1.12.1+cu116
 torchmetrics==0.9.3
-torchvision==0.14.0.dev20220911+cu117
+torchvision==0.13.1+cu116
+ymdl==0.2.5

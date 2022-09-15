@@ -1,5 +1,5 @@
 {
-    "trainer": {
+    "pytorch_lightning_module": {
         "module": "trainers.base_classification",
         "class": "LightningClassificationModule",
         "params": {
@@ -20,25 +20,77 @@
             }
         }
     },
-    "optimizer": {
-        "optimizer": {
-            "type": "Adam",
-            "lr": 0.0004,
-            "betas": [
-                0.5,
-                0.999
-            ]
-        },
-        "lr_scheduler": {
-            "monitor": "val_loss",
-            "scheduler": {
-                "type": "ReduceLROnPlateau",
-                "mode": "min",
-                "factor": 0.5,
-                "threshold": 1e-08,
-                "threshold_mode": "rel",
-                "patience": 0,
-                "verbose": true
+    "optimizers": {
+        "classifier": {
+            "optimizer": {
+                "module": "torch.optim",
+                "class": "Adam",
+                "params": {
+                    "lr": 0.0004,
+                    "betas": [
+                        0.5,
+                        0.999
+                    ]
+                }
+            },
+            "lr_scheduler": {
+                "monitor": "val_loss",
+                "scheduler": {
+                    "module": "torch.optim.lr_scheduler",
+                    "class": "ReduceLROnPlateau",
+                    "params": {
+                        "mode": "min",
+                        "factor": 0.5,
+                        "threshold": 1e-08,
+                        "threshold_mode": "rel",
+                        "patience": 0,
+                        "verbose": true
+                    }
+                }
+            }
+        }
+    },
+    "trainer": {
+        "module": "pytorch_lightning",
+        "class": "Trainer",
+        "params": {
+            "gpus": 1,
+            "max_epochs": 100,
+            "precision": 16,
+            "gradient_clip_val": 0.5,
+            "enable_checkpointing": true,
+            "callbacks": [
+                {
+                    "module": "pytorch_lightning.callbacks",
+                    "class": "EarlyStopping",
+                    "params": {
+                        "monitor": "val_loss",
+                        "patience": 10,
+                        "mode": "min"
+                    }
+                },
+                {
+                    "module": "pytorch_lightning.callbacks",
+                    "class": "ModelCheckpoint",
+                    "params": {
+                        "dirpath": "{save_dir}/checkpoints",
+                        "monitor": "val_loss",
+                        "save_top_k": 1,
+                        "verbose": true,
+                        "save_last": true,
+                        "mode": "min"
+                    }
+                }
+            ],
+            "logger": {
+                "module": "pytorch_lightning.loggers",
+                "class": "WandbLogger",
+                "params": {
+                    "project": "cifar10",
+                    "name": "vit_vanilla",
+                    "save_dir": "./logs",
+                    "log_model": "all"
+                }
             }
         }
     },
@@ -62,17 +114,5 @@
         "train_batch_size": 128,
         "test_batch_size": 128
     },
-    "logger": {
-        "module": "pytorch_lightning.loggers",
-        "class": "WandbLogger",
-        "params": {
-            "project": "cifar10",
-            "name": "vit_vanilla",
-            "save_dir": "./logs",
-            "log_model": "all"
-        }
-    },
-    "data_loader": "cifar10",
-    "cuda": true,
-    "max_epochs": 100
+    "data_loader": "cifar10"
 }

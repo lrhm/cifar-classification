@@ -1,5 +1,5 @@
 # cifar-classification
-A simple cifar classification task with Mate.
+A simple cifar classification task with 30 ViT and CNNs.
 
 # Getting started
 First, install the dev version of Mate from this [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning).
@@ -31,13 +31,11 @@ You can also select any pytorch lightning loggers, for example `TensorBoardLogge
 
 ## Training
 
-To train a resnet18 model with the default configuration, run:
+You can select any combination of your models with hyperparameters, for example:
 ```bash
+mate train resnet cifar10
 mate train vit cifar10
-```
-or 
-```bash
-mate train vit cifar_vit_small
+mate train vit cifar_vit_for_small_datasets
 ```
 
 You can consequently restart the training with the same configuration by running:
@@ -54,4 +52,4 @@ mate clone vit awesome_vit
 Then, change the models in `project/models/awesome_vit` and keep on experimenting.
 
 ## Special thanks
-Special thanks to lucidrains for the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) library.
+Special thanks to the legend lucidrains for the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) library. All the ViTs are based on his work.

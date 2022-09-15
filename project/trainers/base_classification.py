@@ -50,7 +50,6 @@ class LightningClassificationModule(LightningModule):
         self.log('train_accuracy', self.train_accuracy.compute(), prog_bar=True)
         self.train_accuracy.reset()
 
-
     def test_step(self, batch, batch_idx):
         x, y = batch
         y_hat = self(x)
@@ -59,5 +58,5 @@ class LightningClassificationModule(LightningModule):
         return loss
 
     def configure_optimizers(self):
-        from yerbamate.bunch import Bunch
-        return mate.Optimizer(Bunch(self.params.optimizer), self.classifier)()
+        # use mate or directly iniatialize the optimizer, lr scheduler as you wish
+        return mate.Optimizer.optimizers(self.params.optimizers, self)

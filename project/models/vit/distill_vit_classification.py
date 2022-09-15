@@ -10,7 +10,7 @@ class VitClassificationModule(LightningModule):
 
     def __init__(self, classifier: nn.Module, params: Namespace, *args):
         super().__init__(*args)
-
+        
         self.params = params
         self.save_hyperparameters(params)
         self.criterion = t.nn.CrossEntropyLoss()

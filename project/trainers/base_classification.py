@@ -60,3 +60,4 @@ class LightningClassificationModule(LightningModule):
     def configure_optimizers(self):
         # use mate or directly iniatialize the optimizer, lr scheduler as you wish
         return mate.Optimizer.optimizers(self.params.optimizers, self)
+

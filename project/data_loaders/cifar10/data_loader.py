@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 
 class CifarLightningDataModule(pl.LightningDataModule):
 
-    def __init__(self, location: str, batch_size: int, image_size: array, *args):
+    def __init__(self, location: str, batch_size: int, image_size: array, crop_size: int = 4, *args):
         super().__init__(*args)
 
         self.data_dir = location

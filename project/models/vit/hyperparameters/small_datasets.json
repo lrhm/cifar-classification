@@ -86,8 +86,8 @@
                 "module": "pytorch_lightning.loggers",
                 "class": "WandbLogger",
                 "params": {
-                    "project": "cifar10",
-                    "name": "vit_vanilla",
+                    "project": "vit",
+                    "name": "small_dataset",
                     "save_dir": "./logs",
                     "log_model": false
                 }

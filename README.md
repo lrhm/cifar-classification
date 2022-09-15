@@ -13,7 +13,7 @@ You can run the notebook on colab by clicking on the following badge:
 
 A Jupiter notebook is also available in the repository.
 
-## Run locally
+## Install locally
 
 First, install the dev version of Maté from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning).
 
@@ -55,6 +55,15 @@ You can consequently restart the training with the same configuration by running
 ```bash
 mate restart vit vanilla
 ```
+
+## Results
+With wandb logger, you can visualize the results, for example fine tuning a resnet on cifar:
+
+![Train Accuracy](/images/train_accuracy.jpg?raw=true "Train accuracy")
+![Validation Accuracy](/images/val_accuracy.jpg?raw=true "Validation accuracy")
+![Train Loss](/images/train_loss.jpg?raw=true "Train loss")
+![Validation Loss](/images/val_loss.jpg?raw=true "Validation loss")
+
 
 ## Experimenting and trying other models
 You can try other models by changing the model in the hyperparameters or making new configuration file. Over 30 ViTs are available to experiment with. You can also fork the vit models and change the source code as you wish:

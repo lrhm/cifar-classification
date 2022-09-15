@@ -59,13 +59,10 @@ mate restart vit vanilla
 ## Results
 With wandb logger, you can visualize the results, for example fine tuning a resnet on cifar:
 
-<img src="/images/train_accuracy.png" alt="drawing" width="200"/>
-
-![Train Accuracy](/images/train_accuracy.png?raw=true "Train accuracy")
-![Validation Accuracy](/images/val_accuracy.png?raw=true "Validation accuracy")
-![Train Loss](/images/train_loss.png?raw=true "Train loss")
-![Validation Loss](/images/val_loss.png?raw=true "Validation loss")
-
+<img src="/images/train_accuracy.png" alt="drawing" width="20%"/>
+<img src="/images/val_accuracy.png" alt=drawing width="20%" />
+<img src="/images/train_loss.png" alt="drawing" width="20%"/>
+<img src="/images/val_loss.png" alt="drawing" width="20%"/>
 
 ## Experimenting and trying other models
 You can try other models by changing the model in the hyperparameters or making new configuration file. Over 30 ViTs are available to experiment with. You can also fork the vit models and change the source code as you wish:

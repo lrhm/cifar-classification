@@ -7,9 +7,11 @@ You can run mate on your local machine or run a jupyter notebook on google colab
 
 ## Colab
 
-You can run the notebook on google colab by clicking on the following badge:
+You can run the notebook on colab by clicking on the following badge:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://raw.githubusercontent.com/lrhm/cifar-classification/main/vit_mate.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lrhm/cifar-classification/blob/main/vit_mate.ipynb)
+
+A Jupiter notebook is also available in the repository.
 
 ## Run locally
 
@@ -19,7 +21,7 @@ Then, install the dependencies:
 ```bash
 pip install -r project/requirements.txt
 ```
-Keep in mind that the project requires pytorch 1.12.1.
+
 
 ## Running the project
 To run the project, you can use Mate to run different configurations. Look at `resnet/hyperparatmers/vanilla.json` and `vit/hyperparameters/vanilla.json` for examples of configurations. Any configuration file can be selected to train. To train a model, run:

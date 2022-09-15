@@ -14,10 +14,10 @@
                             "image_size": 224,
                             "patch_size": 7,
                             "num_classes": 10,
-                            "dim": 256,
+                            "dim": 128,
                             "depth": 6,
-                            "heads": 16,
-                            "mlp_dim": 512,
+                            "heads": 4,
+                            "mlp_dim": 128,
                             "dropout": 0.1,
                             "emb_dropout": 0.1
                         }

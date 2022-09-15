@@ -17,6 +17,11 @@ class DistillClassificationModule(LightningModule):
 
         self.distiller = distiller
 
+        # disable gradient tracking for teacher
+        for p in self.distiller.teacher.parameters():
+            p.requires_grad = False
+        
+
         self.train_accuracy = torchmetrics.Accuracy()
         self.val_accuracy = torchmetrics.Accuracy()
 
@@ -33,6 +38,7 @@ class DistillClassificationModule(LightningModule):
 
         loss = self.distiller(x, y)
         self.log('train_loss', loss)
+        self.log('train_accuracy', self.train_accuracy.compute(), prog_bar=True)
         return loss
 
     def validation_step(self, batch, batch_idx):

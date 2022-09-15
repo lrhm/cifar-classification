@@ -22,14 +22,14 @@ pip install -r project/requirements.txt
 Keep in mind that the project requires pytorch 1.12.1.
 
 ## Running the project
-To run the project, you can use Mate to run different configurations. Look at `project/models/resnet/hyperparatmers/cifar10.json` and `project/models/vit/hyperparameters/cifar10.json` for examples of configurations. Any configuration file can be selected to train. To train a model, run:
+To run the project, you can use Mate to run different configurations. Look at `resnet/hyperparatmers/vanilla.json` and `vit/hyperparameters/vanilla.json` for examples of configurations. Any configuration file can be selected to train. To train a model, run:
 ```bash
 mate train {model_name} {hyperparameter_file}
 ```
-where `{model_name}` can be anything e.g., `resnet` or `vit` and `{hyperparameter_file}` is the name of the hyperparameter file.
+where `{model_name}` can be anything e.g., `resnet` or `vit` and `{hyperparameter_file}` is the name of the hyperparameter file and the experiment.
 
 ## Logging
-The project uses [Weights and Biases](https://wandb.ai/) to log the training process. To log your training, you need to create an account and install the `wandb` package. 
+The project by default uses [Weights and Biases](https://wandb.ai/) to log the training process. To log your training with wandb you need to create an account and install the `wandb` package. 
 ```
 pip install wandb
 ```
@@ -38,24 +38,24 @@ Then, you need to login to your account:
 wandb login
 ```
 
-You can also select any pytorch lightning loggers, for example `TensorBoardLogger` or `CSVLogger` in the hyperparameter file. See `models/vit/hyperparateres/cifar-tensorboard.json` for an example.
+You can also select any pytorch lightning loggers, e.g., `TensorBoardLogger` or `CSVLogger`. See `/vit/hyperparateres/tensorboard.json` for an example.
 
 ## Training
 
 You can select any combination of your models with hyperparameters, for example:
 ```bash
-mate train resnet cifar10
-mate train vit cifar10
-mate train vit cifar_vit_for_small_datasets
+mate train resnet fine_tune # fine tune a resnet trained on imagenet on cifar
+mate train vit small_datasets #  model from Vision Transformer for Small-Size Datasets paper
+mate train vit vanilla # original ViT paper: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
 ```
 
 You can consequently restart the training with the same configuration by running:
 ```bash
-mate restart vit cifar10
+mate restart vit vanilla
 ```
 
 ## Experimenting and trying other models
-You can try other models by changing the model in the hyperparameters or making new configuration file. Over 30 ViTs are available to experiment with. You can also fork the vit models and change the models as you wish:
+You can try other models by changing the model in the hyperparameters or making new configuration file. Over 30 ViTs are available to experiment with. You can also fork the vit models and change the source code as you wish:
 ```bash
 mate clone vit awesome_vit
 ```

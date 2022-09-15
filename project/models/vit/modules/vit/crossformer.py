@@ -3,7 +3,7 @@ from torch import nn, einsum
 from einops import rearrange
 from einops.layers.torch import Rearrange, Reduce
 import torch.nn.functional as F
-
+import ipdb
 # helpers
 
 def cast_tuple(val, length = 1):
@@ -260,6 +260,8 @@ class CrossFormer(nn.Module):
         )
 
     def forward(self, x):
+
+
         for cel, transformer in self.layers:
             x = cel(x)
             x = transformer(x)

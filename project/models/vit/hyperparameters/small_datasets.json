@@ -1,44 +1,27 @@
 {
     "pytorch_lightning_module": {
-        "module": "distill_vit_classification",
-        "class": "DistillClassificationModule",
+        "module": "trainers.base_classification",
+        "class": "LightningClassificationModule",
         "params": {
-            "distiller": {
-                "module": "modules.vit.distill",
-                "class": "DistillWrapper",
+            "classifier": {
+                "module": "modules.vit.vit_for_small_datasets",
+                "class": "ViT",
                 "params": {
-                    "student": {
-                        "module": "modules.vit.distill",
-                        "class": "DistillableViT",
-                        "params": {
-                            "image_size": 224,
-                            "patch_size": 7,
-                            "num_classes": 10,
-                            "dim": 256,
-                            "depth": 6,
-                            "heads": 16,
-                            "mlp_dim": 512,
-                            "dropout": 0.1,
-                            "emb_dropout": 0.1
-                        }
-                    },
-                    "teacher": {
-                        "module": "transformers",
-                        "class": "AutoModelForImageClassification",
-                        "function": "from_pretrained",
-                        "params": {
-                            "pretrained_model_name_or_path": "aaraki/vit-base-patch16-224-in21k-finetuned-cifar10"
-                        }
-                    },
-                    "temperature": 3,
-                    "alpha": 0.5,
-                    "hard": false
+                    "image_size": 32,
+                    "patch_size": 4,
+                    "num_classes": 10,
+                    "dim": 256,
+                    "depth": 6,
+                    "heads": 16,
+                    "mlp_dim": 256,
+                    "dropout": 0.1,
+                    "emb_dropout": 0.1
                 }
             }
         }
     },
     "optimizers": {
-        "distiller": {
+        "classifier": {
             "optimizer": {
                 "module": "torch.optim",
                 "class": "Adam",
@@ -73,7 +56,7 @@
         "params": {
             "gpus": 1,
             "max_epochs": 100,
-            "precision": 32,
+            "precision": 16,
             "gradient_clip_val": 0.5,
             "enable_checkpointing": true,
             "callbacks": [
@@ -106,9 +89,7 @@
                     "project": "cifar10",
                     "name": "vit_vanilla",
                     "save_dir": "./logs",
-                    "log_model": false,
-                    "offline":true
-
+                    "log_model": false
                 }
             }
         }
@@ -118,10 +99,10 @@
         "class": "CifarLightningDataModule",
         "params": {
             "location": "./data/cifar10",
-            "batch_size": 1,
+            "batch_size": 128,
             "image_size": [
-                224,
-                224
+                32,
+                32
             ]
         }
     }

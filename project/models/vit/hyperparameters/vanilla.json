@@ -4,16 +4,16 @@
         "class": "LightningClassificationModule",
         "params": {
             "classifier": {
-                "module": "project.models.vit.modules.vit.vit",
+                "module": "modules.vit.vit",
                 "class": "ViT",
                 "params": {
                     "image_size": 32,
-                    "patch_size": 16,
+                    "patch_size": 4,
                     "num_classes": 10,
                     "dim": 256,
                     "depth": 6,
                     "heads": 16,
-                    "mlp_dim": 1024,
+                    "mlp_dim": 256,
                     "dropout": 0.1,
                     "emb_dropout": 0.1
                 }
@@ -89,7 +89,7 @@
                     "project": "cifar10",
                     "name": "vit_vanilla",
                     "save_dir": "./logs",
-                    "log_model": "all"
+                    "log_model": false
                 }
             }
         }

@@ -136,13 +136,16 @@ class DistillWrapper(nn.Module):
         )
 
     def forward(self, img, labels, temperature=None, alpha=None, **kwargs):
-        ipdb.set_trace()
+        # ipdb.set_trace()
         b, *_ = img.shape
         alpha = alpha if exists(alpha) else self.alpha
         T = temperature if exists(temperature) else self.temperature
 
         with torch.no_grad():
-            teacher_logits = self.teacher(img)
+            teacher_logits = self.teacher(img)[:2]
+            if type(teacher_logits) is tuple:
+                teacher_logits= teacher_logits[0]
+            # ipdb.set_trace()
 
         student_logits, distill_tokens = self.student(
             img, distill_token=self.distillation_token, **kwargs)

@@ -5,4 +5,5 @@ pytorch_lightning==1.7.5
 torch==1.12.1+cu116
 torchmetrics==0.9.3
 torchvision==0.13.1+cu116
+transformers==4.22.0
 ymdl==0.2.5

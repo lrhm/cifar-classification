@@ -1,4 +1,4 @@
-# Cifar classification with Maté 🧉
+# Cifar classification with [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate).
 A simple cifar classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository. This project requires pytorch, pytorch-lightning, and [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate).
 
 

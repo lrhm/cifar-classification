@@ -1,5 +1,5 @@
-# Cifar classification with [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate)
-A simple cifar classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository. This project requires pytorch, pytorch-lightning, and [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate). [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate) supports pretrained models from any installed python package, for example torchvision and huggingface models. You can also use Maté 🧉 to train your own models. Maté 🧉 is a simple wrapper around pytorch-lightning, so you can use any pytorch-lightning trainer arguments. Maté 🧉 also supports distributed training, so you can train your models on multiple GPUs. Maté 🧉 is still in development, so please report any bugs or feature requests.
+# Cifar classification with [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning)
+A simple image classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository. This project requires pytorch, pytorch-lightning, and [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning). [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning) supports pretrained models from any installed python package, for example torchvision and huggingface models. You can also use Maté 🧉 to train your own models and dataset. Maté 🧉 is a simple wrapper around pytorch-lightning, so you can use any pytorch-lightning trainer arguments. Maté 🧉 also supports distributed training, so you can train your models on multiple GPUs. Maté 🧉 is still in development, so please report any bugs or feature requests.
 
 
 # Getting started
@@ -16,7 +16,7 @@ A Jupiter notebook is also available in the repository.
 
 ## Install locally
 
-First, install the dev version of Maté from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning).
+First, install the dev version of Maté from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning/tree/lightning).
 
 Then, install the dependencies:
 ```bash

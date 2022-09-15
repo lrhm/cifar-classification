@@ -4,7 +4,7 @@
         "class": "LightningClassificationModule",
         "params": {
             "classifier": {
-                "module": "modules.vit.vit_for_small_datasets",
+                "module": "modules.vit.vit_for_small_dataset",
                 "class": "ViT",
                 "params": {
                     "image_size": 32,

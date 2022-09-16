@@ -1,4 +1,4 @@
-# Cifar classification with [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning)
+# Image classification with [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning)
 A simple image classification task with 30 ViTs and CNNs. All the ViT models are sourced from [lucidrains vit-pytorch](https://github.com/lucidrains/vit-pytorch) repository. This project requires pytorch, pytorch-lightning, and [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning). [Maté 🧉](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning) supports pretrained models from any installed python package, for example torchvision and huggingface models. You can also use Maté 🧉 to train your own models and dataset. Maté 🧉 is a simple wrapper around pytorch-lightning, so you can use any pytorch-lightning trainer arguments. Maté 🧉 also supports distributed training, so you can train your models on multiple GPUs or datasets. Maté 🧉 is still in development, so please report any bugs or feature requests.
 
 

@@ -1,8 +1,19 @@
 {
+    "train ": {
+        "module": "trainers.train",
+        "function": "train",
+        "params": {},
+        "generate_params": true
+    },
     "pytorch_lightning_module": {
         "module": "trainers.base_classification",
         "class": "LightningClassificationModule",
         "params": {
+            "params": {
+                "module": "argparse",
+                "class": "Namespace",
+                "self": true
+            },
             "classifier": {
                 "module": "modules.resnet.fine_tune",
                 "class": "ResNetTuneModel",

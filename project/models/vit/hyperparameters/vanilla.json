@@ -3,6 +3,11 @@
         "module": "trainers.base_classification",
         "class": "LightningClassificationModule",
         "params": {
+            "params": {
+                "module": "argparse",
+                "class": "Namespace",
+                "self": true
+            },
             "classifier": {
                 "module": "modules.vit.vit",
                 "class": "ViT",
@@ -13,9 +18,7 @@
                     "dim": 256,
                     "depth": 6,
                     "heads": 16,
-                    "mlp_dim": 256,
-                    "dropout": 0.1,
-                    "emb_dropout": 0.1
+                    "mlp_dim": 256
                 }
             }
         }
